@@ -70,3 +70,4 @@ c:\users\cypher\documents\visual studio 2017\Projects\readify\bin\Microsoft.AI.W
 c:\users\cypher\documents\visual studio 2017\Projects\readify\bin\Microsoft.AI.Web.xml
 c:\users\cypher\documents\visual studio 2017\Projects\readify\obj\Debug\readify.dll
 c:\users\cypher\documents\visual studio 2017\Projects\readify\obj\Debug\readify.pdb
+C:\Users\Cypher\documents\visual studio 2017\Projects\readify\obj\Debug\readify.csprojResolveAssemblyReference.cache

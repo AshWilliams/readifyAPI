@@ -13,10 +13,17 @@ namespace readify.Controllers
         // GET api/<controller>/5
         public string Get(string sentence)
         {
-            var reversedWords = string.Join(" ",
+            
+            if (sentence != null)
+            {
+                var reversedWords = string.Join(" ",
                 sentence.Split(' ')
                 .Select(x => new String(x.Reverse().ToArray())));
-            return reversedWords;
+                return reversedWords;
+            }
+            else
+                throw new ArgumentNullException("string is null.");
+            
         }
 
     }
