@@ -9,36 +9,41 @@ namespace readify.Controllers
 {
     public class TriangleTypeController : ApiController
     {
-        
-        // GET api/<controller>/5
-        public string Get(int a,int b,int c)
+        [Serializable]
+        public enum TriangleType : int
         {
-            if (AllSidesAreEqual(a, b, c))
+
+            [System.Runtime.Serialization.EnumMemberAttribute()]
+            Error = 0,
+
+            [System.Runtime.Serialization.EnumMemberAttribute()]
+            Equilateral = 1,
+
+            [System.Runtime.Serialization.EnumMemberAttribute()]
+            Isosceles = 2,
+
+            [System.Runtime.Serialization.EnumMemberAttribute()]
+            Scalene = 3,
+        }
+        // GET api/<controller>/5
+        public TriangleType Get(int a,int b,int c)
+        {
+            if (a <= 0 || b <= 0 || c <= 0 || ((b + c) <= a) || ((a + c) <= b) || ((a + b) <= c))
             {
-                return ("Equilateral");
-            }
-            else if (AtLeastTwoSideAreEqual(a, b, c))
-            {
-                return ("Isoceles");
+                return TriangleType.Error;
             }
             else
             {
-                return ("Scalene");
+                // hashset ignores the int value already exists in the set.
+                HashSet<int> lines = new HashSet<int>();
+                lines.Add(a);
+                lines.Add(b);
+                lines.Add(c);
+
+                return lines.Count == 1 ? TriangleType.Equilateral : lines.Count == 2 ? TriangleType.Isosceles : TriangleType.Scalene;
             }
         }
 
-        private static bool AllSidesAreEqual(int side1, int side2, int side3)
-        {
-            return (side1 == side2)
-                && (side2 == side3);
-        }
-
-        private static bool AtLeastTwoSideAreEqual(int side1, int side2, int side3)
-        {
-            return (side1 == side2)
-                || (side2 == side3)
-                || (side1 == side3);
-        }
 
     }
 }
